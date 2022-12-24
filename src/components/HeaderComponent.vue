@@ -1,15 +1,15 @@
 <template>
-    <div>
-        <ul v-for="todo in allTodos" :key="todo.id">
-            <li>{{ todo.title }}</li>
-        </ul>
-    </div>
-    <div>
-        <ul v-for="item in todosNotCheck" :key="item.id">
-            <input type="checkbox" v-model="item.completed">
-            <li>{{item.title}}</li>
-        </ul>
-    </div>
+    <label for="">CPF</label>
+    <input type="text" maxlength="11" v-model="cpf">
+    <label for="">Nome</label>
+    <input type="text" minlength="3" v-model="nome">
+    <label for="">Sobrenome</label>
+    <input type="text" minlength="2" v-model="sobrenome">
+    <select v-model="pagination">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+    </select>
 </template>
 
 <script>
@@ -17,45 +17,35 @@
         name: 'HeaderComponent',
         data(){
             return {
-                todos:[
-                    {
-                        id: 1,
-                        title: 'Tarefa 1',
-                        completed: false
-                    },
-                    {
-                        id: 1,
-                        title: 'Tarefa 2',
-                        completed: true
-                    },
-                    {
-                        id: 1,
-                        title: 'Tarefa 3',
-                        completed: false
-                    },
-                    {
-                        id: 1,
-                        title: 'Tarefa 4',
-                        completed: false
-                    },
-                    {
-                        id: 1,
-                        title: 'Tarefa 5',
-                        completed: false
-                    }
-                ]
+                cpf:'',
+                nome:'',
+                sobrenome:'',
+                pagination: 5
+            }
+        },
+        watch:{
+            cpf(vl){
+                if(vl.length >= 11){
+                    this.validityCPF()
+                }
+            },
+            nome(vl){
+                if(vl.length < 3) console.log('Digite um nome válido')
+            },
+            sobrenome(vl){
+                if(vl.length < 2 ) console.log('Digite um sobrenome válido') 
+            },
+            pagination(){
+                console.log('Requisição feita!')
             }
         },
         methods:{
-
+            validityCPF(){
+                console.log(`Validando... ${this.cpf}`)
+            }
         },
         computed:{
-            allTodos(){
-                return this.todos.filter(todo => todo.completed);
-            },
-            todosNotCheck(){
-                return this.todos.filter(todo => !todo.completed);
-            }
+            
         }
     }
 </script>
