@@ -3,6 +3,7 @@
     <div>
         <div class="todo-list" v-for="todo in todos" :key="todo.id">
             {{ todo.title }}
+            <img :src="todo.photo" :alt="todo.title">
         </div>
     </div>
 </template>
@@ -15,19 +16,23 @@
                 todos: [
                     {
                         id: 1,
-                        title: 'Título I'
+                        title: 'Título I',
+                        photo: 'https://via.placeholder.com/150'
                     },
                     {
                         id: 2,
-                        title: 'Título II'
+                        title: 'Título II',
+                        photo: 'https://via.placeholder.com/150'
                     },
                     {
                         id: 3,
-                        title: 'Título III'
+                        title: 'Título III',
+                        photo: 'https://via.placeholder.com/150'
                     },
                     {
                         id: 4,
-                        title: 'Título IV'
+                        title: 'Título IV',
+                        photo: 'https://via.placeholder.com/150'
                     },
                 ]
             }
