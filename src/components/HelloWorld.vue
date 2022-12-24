@@ -2,6 +2,10 @@
   <HeaderComponent
     v-if="showHeader"
   />
+  <h1 v-if="accessLevel === 'rh'">Olá, RH!</h1>
+  <h1 v-else-if="accessLevel === 'dev'">Olá, Dev!</h1>
+  <h1 v-else-if="accessLevel === 'admin'">Olá, Admin!</h1>
+  <h1 v-else>Olá, User!</h1>
 
 </template>
 
@@ -18,6 +22,7 @@ export default {
   data(){
     return{
       showHeader: true,
+      accessLevel: 'rh'
     }
   }
 }
