@@ -1,37 +1,14 @@
 <template>
-    <nav>
-        <ul>
-            <li :class="{'active': home}">Home</li>
-            <li :class="{'active': services}">Services</li>
-            <li :class="{'active': about}">About</li>
-        </ul>
-    </nav>
     <div>
-        <form>
-            <input type="text" name="name" id="name" v-model="name">
-            <br>
-            <select v-model="esporte">
-                <option value="">Escolha</option>
-                <option value="futebol">futebol</option>
-                <option value="vôlei">vôlei</option>
-                <option value="basquete">basquete</option>
-            </select>
-            <br>
-            <label>Quer receber nossas notificações?</label>
-            <input type="radio" v-model="notificações" value="sim">sim
-            <input type="radio" v-model="notificações" value="não">não
-            <br>
-            <label>Aceita nossos termos?</label>
-            <input type="checkbox" v-model="termos">
-            <br>
-            <input type="checkbox" v-model="preferencias" value="Azul">Azul
-            <input type="checkbox" v-model="preferencias" value="Verde">Verde
-            <input type="checkbox" v-model="preferencias" value="Amarelo">Amarelo
-            <input type="checkbox" v-model="preferencias" value="Vermelho">Vermelho
-            <input type="text" v-model="cpf" @keyup.enter="enviar"/>
-            <button type="submit">Enviar</button>
-        </form>
-        <p>{{ name }} | {{ esporte }} | Receber notificações? {{ notificações }} | Aceita nossos termos? {{ termos }} | {{ preferencias }}</p>
+        <ul v-for="todo in allTodos" :key="todo.id">
+            <li>{{ todo.title }}</li>
+        </ul>
+    </div>
+    <div>
+        <ul v-for="item in todosNotCheck" :key="item.id">
+            <input type="checkbox" v-model="item.completed">
+            <li>{{item.title}}</li>
+        </ul>
     </div>
 </template>
 
@@ -40,20 +17,44 @@
         name: 'HeaderComponent',
         data(){
             return {
-                home: false,
-                services: true,
-                about: false,
-                name: "Harry Potter",
-                esporte: '',
-                notificações: '',
-                termos: '',
-                preferencias: [],
-                cpf: ''
+                todos:[
+                    {
+                        id: 1,
+                        title: 'Tarefa 1',
+                        completed: false
+                    },
+                    {
+                        id: 1,
+                        title: 'Tarefa 2',
+                        completed: true
+                    },
+                    {
+                        id: 1,
+                        title: 'Tarefa 3',
+                        completed: false
+                    },
+                    {
+                        id: 1,
+                        title: 'Tarefa 4',
+                        completed: false
+                    },
+                    {
+                        id: 1,
+                        title: 'Tarefa 5',
+                        completed: false
+                    }
+                ]
             }
         },
         methods:{
-            enviar(){
-                console.log("Enviou!")
+
+        },
+        computed:{
+            allTodos(){
+                return this.todos.filter(todo => todo.completed);
+            },
+            todosNotCheck(){
+                return this.todos.filter(todo => !todo.completed);
             }
         }
     }
