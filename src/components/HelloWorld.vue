@@ -1,12 +1,5 @@
 <template>
-  <HeaderComponent
-    v-if="showHeader"
-  />
-  <h1 v-if="accessLevel === 'rh'">Olá, RH!</h1>
-  <h1 v-else-if="accessLevel === 'dev'">Olá, Dev!</h1>
-  <h1 v-else-if="accessLevel === 'admin'">Olá, Admin!</h1>
-  <h1 v-else>Olá, User!</h1>
-
+<HeaderComponent/>
 </template>
 
 <script>
@@ -17,7 +10,6 @@ export default {
     HeaderComponent
   },
   props: {
-    msg: String
   },
   data(){
     return{
@@ -27,7 +19,6 @@ export default {
   }
 }
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;
