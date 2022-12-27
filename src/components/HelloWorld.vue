@@ -1,5 +1,6 @@
 <template>
-<HeaderComponent/>
+<HeaderComponent v-if="showHeader"/>
+<button @click="showHeader = !showHeader">Ativar e desativar</button>
 </template>
 
 <script>
@@ -14,7 +15,6 @@ export default {
   data(){
     return{
       showHeader: true,
-      accessLevel: 'rh'
     }
   }
 }
