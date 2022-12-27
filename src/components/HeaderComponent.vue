@@ -1,13 +1,7 @@
 <template>
-    <h1 class="title">
-        <slot name="title"></slot>
-    </h1>
-    <h2 class="subtitle">
-        <slot name="subtitle"></slot>
-    </h2>
-    <p class="paragraph">
-        <slot name="paragraph"></slot>
-    </p>
+    <div class="card">
+        <slot name="description"></slot>
+    </div>
 </template>
 
 <script>
@@ -28,14 +22,13 @@
     }
 </script>
 
-<style>
-    .title{
-        color:crimson
-    }
-    .subtitle{
-        color: darkred;
-    }
-    .paragraph{
-        color: blueviolet;
+<style scoped>
+    .card{
+        padding: 4rem;
+        background: cornflowerblue;
+        color: #f8f8f8;
+        font-weight: 600;
+        border-radius: 12px;
+        max-width: 400px;
     }
 </style>
