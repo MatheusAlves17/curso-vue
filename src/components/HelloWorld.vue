@@ -1,37 +1,25 @@
 <template>
-<HeaderComponent v-if="showHeader"/>
-<button @click="showHeader = !showHeader">Ativar e desativar</button>
+  <HeaderComponent>
+    <template v-slot:title>Meus pedidos</template>
+    <template v-slot:subtitle>Navegue pelos seu histórico de pedidos</template>
+    <template v-slot:paragraph>Todos os pedidos que foram feitos, inclusives aqueles que foram cancelados, está aqui. Basta pesquisar...</template>
+  </HeaderComponent>
 </template>
 
 <script>
   import HeaderComponent from './HeaderComponent.vue';
-export default {
-  name: 'HelloWorld',
-  components:{
-    HeaderComponent
-  },
-  props: {
-  },
-  data(){
-    return{
-      showHeader: true,
+  export default {
+    name: 'HelloWorld',
+    components:{
+      HeaderComponent,
+    },
+    props: {
+    },
+    data(){
+      return{
+      }
     }
-  }
 }
 </script>
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style>
 </style>

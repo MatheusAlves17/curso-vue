@@ -1,7 +1,13 @@
 <template>
-    <div>
-        <h1>Hello world</h1>
-    </div>
+    <h1 class="title">
+        <slot name="title"></slot>
+    </h1>
+    <h2 class="subtitle">
+        <slot name="subtitle"></slot>
+    </h2>
+    <p class="paragraph">
+        <slot name="paragraph"></slot>
+    </p>
 </template>
 
 <script>
@@ -18,29 +24,18 @@
             
         },
         computed:{
-        },
-        beforeUnmount(){
-            console.log('beforeUnmount')
-        },
-        unmounted(){
-            console.log('unmounted')
         }
     }
 </script>
 
 <style>
-    ul{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    li{
-        list-style-type: none;
-        margin: 6px 12px;
-        font-weight: 600;
-        cursor: pointer;
-    }
-    .active{
+    .title{
         color:crimson
+    }
+    .subtitle{
+        color: darkred;
+    }
+    .paragraph{
+        color: blueviolet;
     }
 </style>
