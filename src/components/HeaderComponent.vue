@@ -1,6 +1,8 @@
 <template>
-    <div class="card">
-        <slot name="description"></slot>
+<!-- <div :class="['dialog-default',{'dialog-success': status === 'success'}]"> -->
+    <!-- <div :class="`dialog-default dialog-${status}`"> -->
+    <div :class="comportamento">
+        <p>Seu formulário foi enviado com sucesso!</p>
     </div>
 </template>
 
@@ -11,6 +13,16 @@
             return {
             }
         },
+        props:
+            // ['status'] ou
+            {
+                status: {
+                    type: String,
+                    default: 'default'
+                }
+            }
+
+        ,
         watch:{
             
         },
@@ -18,17 +30,27 @@
             
         },
         computed:{
+            comportamento(){
+                return [
+                    'dialog-default',
+                    this.status ? `dialog-${this.status}` : ''
+                ]
+            }
         }
     }
 </script>
 
 <style scoped>
-    .card{
-        padding: 4rem;
-        background: cornflowerblue;
+    .dialog-default{
+        padding: 3px;
+        border-radius: 16px;
         color: #f8f8f8;
-        font-weight: 600;
-        border-radius: 12px;
-        max-width: 400px;
+        background: #272727;
+    }
+    .dialog-success{
+        background: #42b983;
+    }
+    .dialog-fail{
+        background: #b94242;
     }
 </style>
