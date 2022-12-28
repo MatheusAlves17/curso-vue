@@ -3,6 +3,7 @@
     <!-- <div :class="`dialog-default dialog-${status}`"> -->
     <div :class="comportamento">
         <p>Seu formulário foi enviado com sucesso!</p>
+        <button @click="fechar()">X</button>
     </div>
 </template>
 
@@ -27,7 +28,10 @@
             
         },
         methods:{
-            
+            fechar(){
+                this.$emit('feche')
+                console.log('feche')
+            }
         },
         computed:{
             comportamento(){

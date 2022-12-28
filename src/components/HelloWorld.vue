@@ -1,5 +1,5 @@
 <template>
-  <HeaderComponent status="success"/>
+  <HeaderComponent v-if="showDialog" @feche="fechando()" status="success"/>
 </template>
 
 <script>
@@ -13,6 +13,13 @@
     },
     data(){
       return{
+        showDialog: true
+      }
+    },
+    methods:{
+      fechando(){
+        this.showDialog = false
+        console.log('fechando...')
       }
     }
 }
